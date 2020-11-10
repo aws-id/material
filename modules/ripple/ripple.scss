@@ -1,0 +1,142 @@
+:root {
+    --my-ripple-background-color: var(--my-color-primary);
+    --my-ripple-selected-background-color: var(--my-color-primary);
+    --my-ripple-activated-color: var(--my-color-primary);
+    --my-ripple-activated-background-color: var(--my-color-primary);
+    --my-ripple-disabled-opacity: 0.38;
+    --my-ripple-hovered-opacity: 0.04;
+    --my-ripple-focused-opacity: 0.12;
+    --my-ripple-selected-opacity: 0.08;
+    --my-ripple-activated-opacity: 0.12;
+    --my-ripple-pressed-opacity: 0.16;
+    --my-ripple-dragged-opacity: 0.08;
+}
+
+.my-ripple {
+    --my-ripple-left: 50%;
+    --my-ripple-top: 50%;
+    --my-ripple-x: 0%;
+    --my-ripple-y: 0%;
+    --my-ripple-size: 141.4213562373095%;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: var(--my-ripple-left, 50%);
+        top: var(--my-ripple-top, 50%);
+        transform: translate3d(-50%, -50%, 0) translate3d(var(--my-ripple-x, 0%), var(--my-ripple-y, 0%), 0);
+        width: var(--my-ripple-size);
+        padding-top: var(--my-ripple-size);
+        border-radius: 50%;
+        background-color: var(--my-ripple-background-color, #000);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.my-ripple--trigger {
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.my-ripple--unbounded {
+    overflow: visible;
+}
+
+.my-ripple--colored {
+    --my-ripple-background-color: var(--my-color-on-primary);
+    --my-ripple-selected-background-color: var(--my-color-on-primary);
+    --my-ripple-activated-color: var(--my-color-on-primary);
+    --my-ripple-activated-background-color: var(--my-color-on-primary);
+    --my-ripple-disabled-opacity: 0.38;
+    --my-ripple-hovered-opacity: 0.08;
+    --my-ripple-focused-opacity: 0.24;
+    --my-ripple-selected-opacity: 0.16;
+    --my-ripple-activated-opacity: 0.24;
+    --my-ripple-pressed-opacity: 0.32;
+    --my-ripple-dragged-opacity: 0.16;
+}
+
+// .my-ripple--fadeout {}
+
+.my-ripple--hovered::after {
+    opacity: var(--my-ripple-hovered-opacity, 0.04);
+}
+
+.my-ripple--focused {
+    &::after {
+        opacity: var(--my-ripple-focused-opacity, 0.12);
+        animation: var(--my-ripple, my-ripple) 150ms ease-in-out;
+    }
+
+    &.my-ripple--fadeout::after {
+        opacity: 0;
+        animation: var(--my-ripple, my-ripple) 150ms ease-in-out, var(--my-ripple-fadeout, my-ripple-fadeout) 450ms ease-in-out;
+    }
+}
+
+.my-ripple[selected] {
+    &::after {
+        background-color: var(--my-ripple-selected-background-color, var(--my-color-primary));
+        opacity: var(--my-ripple-selected-opacity, 0.08);
+    }
+
+    &.my-ripple--fadeout::after {
+        opacity: 0;
+    }
+}
+
+.my-ripple[activated] {
+    color: var(--my-ripple-activated-color, var(--my-color-primary));
+
+    &::after {
+        background-color: var(--my-ripple-activated-background-color, var(--my-color-primary));
+        opacity: var(--my-ripple-activated-opacity, 0.12);
+    }
+
+    &.my-ripple--fadeout::after {
+        opacity: 0;
+    }
+}
+
+.my-ripple--pressed::after {
+    opacity: var(--my-ripple-pressed-opacity, 0.16);
+}
+
+.my-ripple[dragged]::after {
+    opacity: var(--my-ripple-dragged-opacity, 0.08);
+}
+
+[disabled] {
+    opacity: var(--my-ripple-disabled-opacity, 0.38);
+    pointer-events: none;
+
+    &::after {
+        opacity: 0;
+    }
+}
+
+// keyframes
+@keyframes my-ripple {
+    from {
+        width: 0;
+        padding-top: 0;
+    }
+    to {
+        width: var(--my-ripple-size);
+        padding-top: var(--my-ripple-size);
+    }
+}
+
+@keyframes my-ripple-fadeout {
+    from {
+        opacity: 0.16;
+    }
+    to {
+        opacity: 0;
+    }
+}

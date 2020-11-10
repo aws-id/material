@@ -1,0 +1,56 @@
+// scheme
+@mixin my-scheme($x: light) {
+    @if $x == light {
+        @media (prefers-color-scheme: light) {
+            @content;
+        }
+    } @else {
+        @media (prefers-color-scheme: dark) {
+            @content;
+        }
+    }
+}
+
+// color
+@mixin my-color($x: light) {
+    @if $x == light {
+        --my-color-dark: #000;
+        --my-color-dark87: #{rgba(#000, 0.87)};
+        --my-color-dark54: #{rgba(#000, 0.54)};
+        --my-color-dark38: #{rgba(#000, 0.38)};
+        --my-color-dark12: #{rgba(#000, 0.12)};
+        --my-color-light: #fff;
+        --my-color-light70: #{rgba(#fff, 0.7)};
+        --my-color-light50: #{rgba(#fff, 0.5)};
+        --my-color-primary: #6200ee;
+        --my-color-secondary: #03dac6;
+        --my-color-background: #e5e5e5;
+        --my-color-surface: var(--my-color-light);
+        --my-color-error: #b00020;
+        --my-color-on-primary: var(--my-color-light);
+        --my-color-on-secondary: var(--my-color-dark87);
+        --my-color-on-background: var(--my-color-dark87);
+        --my-color-on-surface: var(--my-color-dark87);
+        --my-color-on-error: var(--my-color-light);
+    } @else {
+        // invert
+        --my-color-dark: #fff;
+        --my-color-dark87: #{rgba(#fff, 0.87)};
+        --my-color-dark54: #{rgba(#fff, 0.54)};
+        --my-color-dark38: #{rgba(#fff, 0.38)};
+        --my-color-dark12: #{rgba(#fff, 0.12)};
+        --my-color-light: #000;
+        --my-color-light70: #{rgba(#000, 0.7)};
+        --my-color-light50: #{rgba(#000, 0.5)};
+        --my-color-primary: #bb86fc;
+        --my-color-secondary: #03dac6;
+        --my-color-background: #292929;
+        --my-color-surface: #121212;
+        --my-color-error: #cf6679;
+        --my-color-on-primary: var(--my-color-light);
+        --my-color-on-secondary: var(--my-color-light);
+        --my-color-on-background: var(--my-color-dark);
+        --my-color-on-surface: var(--my-color-dark);
+        --my-color-on-error: var(--my-color-light);
+    }
+}

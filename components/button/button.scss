@@ -1,0 +1,76 @@
+﻿:root {
+    --my-button-density: 0;
+    --my-button-height: calc(36px + (4px * var(--my-button-density)));
+}
+
+// my button
+my-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: relative;
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--my-color-primary);
+
+    // style
+
+    &[outlined] {
+        // background-color: transparent;
+        // color: var(--my-color-primary);
+        @include my-outlined();
+        
+        .my-button__text {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+    }
+    &[contained] {
+        background-color: var(--my-color-primary);
+        color: var(--my-color-on-primary);
+        @include my-elevation(z2);
+
+        .my-button__text {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+    }
+
+    // icon spacer
+    .my-button__icon {
+        + .my-button__text {
+            margin-left: calc(8px - 12px);
+        }
+    }
+}
+
+// my icon
+// my-icon {}
+
+// my button icon
+.my-button__icon {
+    margin: calc((var(--my-button-height) - 24px) / 2) 12px;
+
+    + .my-button__text {
+        margin-left: calc(8px - 12px);
+    }
+}
+
+// my button text
+.my-button__text {
+    @include my-typography(button);
+    margin: calc((var(--my-button-height) - 20px) / 2) 8px;
+}
+
+// my button native
+.my-button__native {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: transparent;
+}

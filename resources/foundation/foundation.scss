@@ -1,0 +1,40 @@
+// root
+:root {
+    @include my-scheme(light) {
+        @include my-color(light);
+
+        [color="invert"] {
+            @include my-color(dark);
+        }
+    }
+
+    @include my-scheme(dark) {
+        @include my-color(dark);
+
+        [color="invert"] {
+            @include my-color(light);
+        }
+    }
+}
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+
+    &,
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+}
+
+// body
+body {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    @include my-typography(body1);
+    background-color: var(--my-color-background);
+    color: var(--my-color-on-background);
+}

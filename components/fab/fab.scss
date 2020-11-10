@@ -1,0 +1,47 @@
+﻿:root {
+    --my-fab-density: 0;
+    --my-fab-height: calc(56px + (4px * var(--my-fab-density)));
+}
+
+// my fab
+my-fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 6;
+    background-color: var(--my-color-secondary);
+    color: var(--my-color-on-secondary);
+    border-radius: calc(var(--my-fab-height) / 2);
+    @include my-elevation(z6);
+
+    &[mini] {
+        --my-fab-height: calc(40px + (4px * var(--my-fab-density)));
+    }
+    &[extended] {
+        --my-fab-height: calc(48px + (4px * var(--my-fab-density)));
+    }
+
+    // my ripple
+    &.my-ripple {
+        position: fixed;
+    }
+}
+
+// my fab icon
+.my-fab__icon {
+    margin: calc((var(--my-fab-height) - 24px) / 2);
+
+    + .my-fab__text {
+        margin-left: calc(12px - 12px);
+    }
+}
+
+// my fab text
+.my-fab__text {
+    @include my-typography(button);
+    margin: calc((var(--my-fab-height) - 20px) / 2);
+}

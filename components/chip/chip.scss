@@ -1,0 +1,68 @@
+﻿:root {
+    --my-chip-density: 0;
+    --my-chip-height: calc(32px + (4px * var(--my-chip-density)));
+}
+
+// my chip
+my-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    min-width: var(--my-chip-heigh);
+    background-color: var(--my-color-dark12);
+    color: var(--my-color-dark87);
+    border-radius: calc(var(--my-chip-height) / 2);
+
+    &[outlined] {
+        @include my-outlined();
+        background-color: transparent;
+    }
+}
+
+// my chip image
+.my-chip__image {
+    width: 24px;
+    margin: calc((var(--my-chip-height) - 24px) / 2) 4px;
+
+    + .my-chip__text {
+        margin-left: calc(8px - 4px);
+    }
+}
+
+// my chip icon
+.my-chip__icon {
+    margin: calc((var(--my-chip-height) - 24px) / 2) 4px;
+    color: var(--my-color-dark54);
+
+    + .my-chip__text {
+        margin-left: calc(8px - 4px);
+    }
+}
+
+// my chip text
+.my-chip__text {
+    @include my-typography(body2);
+    margin: calc((var(--my-chip-height) - 20px) / 2) 12px;
+
+    + .my-chip__action {
+        margin-left: calc(8px - 12px);
+    }
+}
+
+// my chip action
+.my-chip__action {
+    margin: calc((var(--my-chip-height) - 24px) / 2) 8px;
+    color: var(--my-color-dark54);
+}
+
+// my chip group
+my-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px;
+
+    my-chip {
+        margin: 4px;
+    }
+}

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chip</title>
+    <link rel="stylesheet" href="../../material.css">
+</head>
+
+<body>
+
+    <div style="padding: 64px;">
+        <my-chip text="Text"></my-chip>
+        <my-chip text="Text" action="cancel"></my-chip>
+        <my-chip icon="lens" text="Text" action="cancel"></my-chip>
+        <my-chip src="https://avatars.dicebear.com/api/initials/17.svg" text="Text" action="cancel"></my-chip>
+        <br><br>
+
+        <my-chip outlined text="Text"></my-chip>
+        <my-chip outlined text="Text" action="cancel"></my-chip>
+        <my-chip outlined icon="lens" text="Text" action="cancel"></my-chip>
+        <my-chip outlined src="https://avatars.dicebear.com/api/initials/17.svg" text="Text" action="cancel"></my-chip>
+        <br><br>
+
+        <my-chip-group style="width: 256px;">
+            <my-chip text="Lorem"></my-chip>
+            <my-chip text="Perspiciatis"></my-chip>
+            <my-chip text="Laboriosam"></my-chip>
+            <my-chip text="Eos"></my-chip>
+            
+            <my-chip text="Quos"></my-chip>
+            <my-chip text="Ad"></my-chip>
+            <my-chip text="In"></my-chip>
+            <my-chip text="Dolorum"></my-chip>
+            <my-chip text="Non"></my-chip>
+
+            <my-chip text="Rerum"></my-chip>
+            <my-chip text="Earum"></my-chip>
+            <my-chip text="Esse"></my-chip>
+
+            <my-chip text="Vero"></my-chip>
+            <my-chip text="Esse"></my-chip>
+            <my-chip text="Praesentium"></my-chip>
+            <my-chip text="Soluta"></my-chip>
+        </my-chip-group>
+        <br><br>
+    </div>
+    <br><br>
+
+    <script src="../../material.js" type="module"></script>
+    <script type="module">
+        let chips = document.querySelectorAll('my-chip')
+        chips.forEach(el => {
+            el.addEventListener('onActionClick', console.log)
+        })
+    </script>
+</body>
+
+</html>
